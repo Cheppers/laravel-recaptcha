@@ -316,6 +316,18 @@ class ReCaptchaBuilder
             return true;
         }
 
+        if (!config('recaptcha.enabled')) {
+            if ($this->returnArray()) {
+                // Add 'skip_by_ip' field to response
+                return [
+                    'enabled' => false,
+                    'score'      => 0.9,
+                    'success'    => true
+                ];
+            }
+            return true;
+        }
+
         $params = http_build_query([
             'secret'   => $this->api_secret_key,
             'remoteip' => request()->getClientIp(),

@@ -12,7 +12,7 @@
  * To configure correctly please visit https://developers.google.com/recaptcha/docs/start
  */
 return [
-
+    'enabled' => env('RECAPTCHA_ENABLED', true),
     /**
      *
      * The site key
